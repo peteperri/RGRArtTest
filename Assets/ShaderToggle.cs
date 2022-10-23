@@ -1,19 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShaderToggle : MonoBehaviour
 {
-    [SerializeField] private Material[] mats;
-    // Start is called before the first frame update
+    public Material[] regMats { get; set; }
+    public Material[] toonMats { get; set; }
+    private GameObject[] outlines;
+    private MaterialSwitcher[] _materialSwitchers;
+
+    private bool toonShaderOn = true;
     void Start()
     {
-        
+        regMats = Resources.LoadAll<Material>("Materials/Regular Mats");
+        toonMats = Resources.LoadAll<Material>("Materials/Toon Mats");
+        outlines = GameObject.FindGameObjectsWithTag("Outline");
+        _materialSwitchers = FindObjectsOfType<MaterialSwitcher>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            foreach (var matSwitcher in _materialSwitchers)
+            {
+                matSwitcher.SwapMats(toonShaderOn);
+            }
+            
+            if (toonShaderOn)
+            {
+                
+                foreach (var outline in outlines)
+                {
+                    outline.GetComponent<MeshRenderer>().enabled = false;
+                }
+
+                toonShaderOn = false;
+            }
+            else
+            {
+
+                foreach (var outline in outlines)
+                {
+                    outline.GetComponent<MeshRenderer>().enabled = true;
+                }
+
+                toonShaderOn = true;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+
     }
 }

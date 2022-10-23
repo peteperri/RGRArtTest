@@ -4,9 +4,19 @@ public class Rotator : MonoBehaviour
 {
     [SerializeField] private float speed;
     private bool spinning = true;
+    private bool canIncreaseDecreaseSpeed = true;
+
+    void Start()
+    {
+        if (gameObject.name == "light")
+        {
+            canIncreaseDecreaseSpeed = false;
+        }
+    }
 
     void Update()
     {
+
         if (spinning)
         {
             transform.Rotate(0f, speed * Time.deltaTime, 0f, Space.Self);
@@ -17,11 +27,11 @@ public class Rotator : MonoBehaviour
             ToggleSpeed();
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && canIncreaseDecreaseSpeed)
         {
             speed += 15f *Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && canIncreaseDecreaseSpeed)
         {
             speed -= 15f * Time.deltaTime;
         }
