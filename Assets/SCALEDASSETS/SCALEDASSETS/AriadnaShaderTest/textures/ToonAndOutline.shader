@@ -5,15 +5,15 @@ Shader "Unlit/ToonAndOutline"
         _Albedo("Albedo", Color) = (1, 1, 1, 1) 
         _Shades("Shades", Range(1,20)) = 3 
         
-        _InkColor("InkColor", Color) = (0, 0, 0, 0)
-        _InkSize("InkSize", float) = 1.0
+        // _InkColor("InkColor", Color) = (0, 0, 0, 0)
+        // _InkSize("InkSize", float) = 1.0
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
         
-        //---------------------------------------------------------------------------------------------------------------------------------
+        // ---------------------------------------------------------------------------------------------------------------------------------
         //  Pass
         // {
         //     Cull Front
@@ -33,20 +33,18 @@ Shader "Unlit/ToonAndOutline"
 
         //     struct v2f
         //     {
-                
-        //         float4 vertex : SV_POSITION;
-                
+        //         float4 vertex : SV_POSITION;   
         //     };
 
         //     float4 _InkColor;
         //     float _InkSize;
 
-            
-
 
         //     v2f vert (appdata v)
         //     {
         //         v2f o;
+        //         //Translate the vertex along the normal vector 
+        //         //This will increase the size of the model
         //         o.vertex = UnityObjectToClipPos(v.vertex + _InkSize * v.normal);
         //         return o;
         //     }
@@ -57,7 +55,7 @@ Shader "Unlit/ToonAndOutline"
         //     }
         //     ENDCG
         // }
-        //---------------------------------------------------------------------------------------------------------------------------------
+        // ---------------------------------------------------------------------------------------------------------------------------------
 
         Pass
         {
