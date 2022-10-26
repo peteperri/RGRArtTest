@@ -56,6 +56,8 @@ Shader "Unlit/ToonShader"
 
             };
 
+            
+
 
 
             struct v2f
@@ -67,6 +69,8 @@ Shader "Unlit/ToonShader"
                 float4 vertex : SV_POSITION;
 
                 half3 worldNormal: NORMAL;
+
+                float3 viewDir : TEXCOORD1;
 
             };
 
@@ -110,6 +114,8 @@ Shader "Unlit/ToonShader"
 
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
 
+                o.viewDir = WorldSpaceViewDir(v.vertex);
+
                 return o;
 
             }
@@ -135,5 +141,6 @@ Shader "Unlit/ToonShader"
         }
 
     }
+    Fallback "Vertex Lit"
 
 }

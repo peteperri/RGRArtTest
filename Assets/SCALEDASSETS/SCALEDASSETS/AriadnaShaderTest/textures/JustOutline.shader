@@ -1,4 +1,4 @@
-Shader "Unlit/ToonAndOutline"
+Shader "Unlit/JustOutline"
 {
     Properties
     {

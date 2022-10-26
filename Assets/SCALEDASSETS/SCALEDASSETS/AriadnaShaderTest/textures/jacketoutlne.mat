@@ -107,7 +107,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _InkSize: 0.00019
+    - _InkSize: 0.00007
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _OutlineWidth: 0
