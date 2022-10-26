@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hairOutline
+  m_Name: hairOutline 1
   m_Shader: {fileID: 4800000, guid: 525507d2edb834942829795f2a9dbe92, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
